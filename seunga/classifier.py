@@ -9,4 +9,4 @@ _classifier = pipeline("zero-shot-classification", model=MODEL_NAME)
 
 def classify(text):
     result = _classifier(text, LABELS, hypothesis_template=TEMPLATE)
-    return result["labels"][0], result["scores"][0]
+    return list(zip(result["labels"], result["scores"]))
